@@ -52,7 +52,7 @@
   },
   "scripts": {
     "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip",
+    "prebuildify": "prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0",
     "build": "npm run build-typescript && npm run build-tsx",
     "build-typescript": "cd typescript && npx tree-sitter generate --no-bindings",
     "build-tsx": "cd tsx && npx tree-sitter generate --no-bindings",
