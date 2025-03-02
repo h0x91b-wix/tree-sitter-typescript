@@ -3,7 +3,7 @@ target/
 
 # Node artifacts
 build/
-prebuilds/
+# prebuilds/
 node_modules/
 *.tgz
 

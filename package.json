@@ -52,7 +52,12 @@
   },
   "scripts": {
     "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0",
+    "prebuildify": "npm run prebuildify-current && npm run prebuildify-linux && npm run prebuildify-darwin && npm run prebuildify-win32",
+    "prebuildify-all-platforms": "npm run prebuildify-current && npm run prebuildify-linux && npm run prebuildify-darwin && npm run prebuildify-win32",
+    "prebuildify-current": "prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 && prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 --arch=x64",
+    "prebuildify-linux": "prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 --platform=linux --arch=arm64 && prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 --platform=linux --arch=x64",
+    "prebuildify-darwin": "prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 --platform=darwin --arch=arm64 && prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 --platform=darwin --arch=x64",
+    "prebuildify-win32": "prebuildify --napi --strip --target=18.0.0 --target=20.0.0 --target=22.0.0 --platform=win32 --arch=x64",
     "build": "npm run build-typescript && npm run build-tsx",
     "build-typescript": "cd typescript && npx tree-sitter generate --no-bindings",
     "build-tsx": "cd tsx && npx tree-sitter generate --no-bindings",
